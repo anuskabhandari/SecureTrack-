@@ -1,0 +1,46 @@
+body{
+  background:#0f172a;
+  color:white;
+  font-family:Segoe UI,sans-serif;
+}
+
+.hero{
+  min-height:90vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+
+  background: linear-gradient(
+    135deg,
+    #2563eb 0%,
+    #38bdf8 100%
+  );
+
+  color:white;
+}
+.glass-card{
+  background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.1);
+  border-radius:20px;
+  backdrop-filter:blur(10px);
+  transition:.3s;
+}
+
+.glass-card:hover{
+  transform:translateY(-8px);
+}
+
+.section-title{
+  font-weight:700;
+}
+
+.cta-section{
+  background:linear-gradient(135deg,#2563eb,#06b6d4);
+  border-radius:25px;
+  padding:60px;
+}
+
+.footer{
+  border-top:1px solid rgba(255,255,255,.1);
+}
