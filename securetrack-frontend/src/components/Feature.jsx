@@ -20,29 +20,34 @@ export default function Features() {
   ];
 
   return (
-    <div className="container py-5">
+    <section id="features">
 
-      <h2 className="section-title text-center mb-5">
-        Key Features
-      </h2>
+      <div className="container py-5">
 
-      <div className="row g-4">
+        <h2 className="section-title text-center mb-5">
+          Key Features
+        </h2>
 
-        {features.map((feature, index) => (
-          <div className="col-md-3" key={index}>
-            <div className="glass-card p-4 h-100 text-center">
+        <div className="row g-4">
 
-              <h5>{feature.title}</h5>
+          {features.map((feature, index) => (
+            <div className="col-md-3" key={index}>
+              <div className="glass-card p-4 h-100 text-center">
 
-              <p className="text-secondary mt-2">
-                {feature.desc}
-              </p>
+                <h5>{feature.title}</h5>
 
+                <p className="text-secondary mt-2">
+                  {feature.desc}
+                </p>
+
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
+
+        </div>
 
       </div>
-    </div>
+
+    </section>
   );
 }

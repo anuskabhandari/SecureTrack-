@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function Hero() {
   return (
     <section className="hero">
@@ -12,13 +14,19 @@ export default function Hero() {
           Vulnerability Management Platform
         </p>
 
-        <button className="btn btn-primary btn-lg mt-4 me-3">
+        <Link
+          to="/register"
+          className="btn btn-primary btn-lg mt-4 me-3"
+        >
           Get Started
-        </button>
+        </Link>
 
-        <button className="btn btn-outline-light btn-lg mt-4">
-          Learn More
-        </button>
+        <a
+  href="#features"
+  className="btn btn-outline-light btn-lg mt-4"
+>
+  Learn More
+</a>
 
       </div>
     </section>
