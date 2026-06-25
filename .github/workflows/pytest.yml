@@ -29,5 +29,6 @@ jobs:
           pip install -r requirements.txt
 
       - name: Run Pytest
-        run: |
-          pytest
+        env:
+          GITHUB_ACTIONS: true
+        run: pytest
