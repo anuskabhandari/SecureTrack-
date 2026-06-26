@@ -12,7 +12,9 @@ function App() {
         <Route path="/" element={<Landing />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-
+        <Route path="/admin-dashboard" element={<AdminDashboard />} />
+        <Route path="/developer-dashboard" element={<DeveloperDashboard />} />
+        <Route path="/user-dashboard" element={<UserDashboard />} />
       </Routes>
 
     </BrowserRouter>

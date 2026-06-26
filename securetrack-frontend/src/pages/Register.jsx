@@ -3,11 +3,12 @@ import axios from "axios";
 
 export default function Register() {
   const [form, setForm] = useState({
-    username: "",
-    email: "",
-    password: "",
-    confirmPassword: "",
-  });
+     username: "",
+     email: "",
+     role: "User",
+     password: "",
+     confirmPassword: "",
+});
 
   const [message, setMessage] = useState("");
   const [success, setSuccess] = useState(false);
@@ -25,9 +26,11 @@ export default function Register() {
       const response = await axios.post(
         "http://127.0.0.1:8000/api/register/",
         {
-          username: form.username,
-          email: form.email,
-          password: form.password,
+            username: form.username,
+            email: form.email,
+            password: form.password,
+            confirm_password: form.confirmPassword,
+            role: form.role,
         }
       );
 
@@ -113,6 +116,25 @@ export default function Register() {
                 })
               }
             />
+          </div>
+          <div className="mb-3">
+             <label className="form-label">
+                Register As
+             </label>
+
+             <select
+               className="form-select"
+               value={form.role}
+               onChange={(e) =>
+                 setForm({
+                   ...form,
+                   role: e.target.value,
+                 })
+               }
+             >
+               <option value="User">User</option>
+               <option value="Developer">Developer</option>
+             </select>
           </div>
 
           <div className="mb-3">

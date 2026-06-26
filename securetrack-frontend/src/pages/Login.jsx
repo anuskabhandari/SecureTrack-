@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
 
@@ -9,7 +10,7 @@ export default function Login() {
 
   const [message, setMessage] = useState("");
   const [success, setSuccess] = useState(false);
-
+  const navigate = useNavigate();
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -23,9 +24,22 @@ export default function Login() {
       setMessage(response.data.message);
 
       localStorage.setItem("isLoggedIn", "true");
+      localStorage.setItem("role", response.data.role);
 
       setTimeout(() => {
-        window.location.href = "/";
+
+        if (response.data.role === "Admin") {
+          navigate("/admin-dashboard");
+         }
+
+        else if (response.data.role === "Developer") {
+          navigate("/developer-dashboard");
+         }
+
+        else {
+          navigate("/user-dashboard");
+         }
+
       }, 1500);
 
     } catch (error) {
