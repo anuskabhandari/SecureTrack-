@@ -1,6 +1,7 @@
 import DashboardLayout from "../components/dashboard/DashboardLayout";
 import StatCard from "../components/dashboard/StatCard";
-
+import DashboardChart from "../components/dashboard/DashboardChart";
+import "../styles/dashboard.css";
 export default function AdminDashboard() {
 
     return (
@@ -34,7 +35,7 @@ export default function AdminDashboard() {
                 />
 
             </div>
-
+            <DashboardChart />
             <div className="table-card">
 
                 <h3>Recent Activities</h3>
@@ -94,6 +95,7 @@ export default function AdminDashboard() {
             </div>
 
         </DashboardLayout>
+
 
     );
 

@@ -25,6 +25,7 @@ export default function Login() {
 
       localStorage.setItem("isLoggedIn", "true");
       localStorage.setItem("role", response.data.role);
+      localStorage.setItem("username", response.data.username);
 
       setTimeout(() => {
 

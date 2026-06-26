@@ -1,93 +1,68 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function Sidebar({ role }) {
 
-  return (
+    const navigate = useNavigate();
 
-    <div className="sidebar">
+    const logout = () => {
 
-      <div className="logo">
-        <h3>🛡 SecureTrack</h3>
-      </div>
+        localStorage.clear();
+        navigate("/login");
 
-      <ul>
+    };
 
-        <li>
-          <Link to="#">Dashboard</Link>
-        </li>
+    return (
 
-        <li>
-          <Link to="#">Vulnerabilities</Link>
-        </li>
+        <div className="sidebar">
 
-        <li>
-          <Link to="#">Incidents</Link>
-        </li>
+            <div className="logo">
 
-        {role === "Admin" && (
+                <h3>🛡 SecureTrack</h3>
 
-          <>
+            </div>
 
-            <li>
-              <Link to="#">Users</Link>
-            </li>
+            <ul>
 
-            <li>
-              <Link to="#">Analytics</Link>
-            </li>
+                <li><Link to="#">🏠 Dashboard</Link></li>
 
-            <li>
-              <Link to="#">Reports</Link>
-            </li>
+                <li><Link to="#">🛡 Vulnerabilities</Link></li>
 
-          </>
+                <li><Link to="#">🚨 Incidents</Link></li>
 
-        )}
+                {role === "Admin" && (
+                    <>
+                        <li><Link to="#">👥 Users</Link></li>
+                        <li><Link to="#">📊 Analytics</Link></li>
+                        <li><Link to="#">📄 Reports</Link></li>
+                        <li><Link to="#">⚙ Settings</Link></li>
+                    </>
+                )}
 
-        {role === "Developer" && (
+                {role === "Developer" && (
+                    <>
+                        <li><Link to="#">📋 My Tasks</Link></li>
+                        <li><Link to="#">✅ Assigned Issues</Link></li>
+                    </>
+                )}
 
-          <>
+                {role === "User" && (
+                    <>
+                        <li><Link to="#">➕ Report Issue</Link></li>
+                        <li><Link to="#">📑 My Reports</Link></li>
+                    </>
+                )}
 
-            <li>
-              <Link to="#">My Tasks</Link>
-            </li>
+            </ul>
 
-            <li>
-              <Link to="#">Assigned Issues</Link>
-            </li>
+            <button
+                className="logout-btn"
+                onClick={logout}
+            >
+                🚪 Logout
+            </button>
 
-          </>
+        </div>
 
-        )}
-
-        {role === "User" && (
-
-          <>
-
-            <li>
-              <Link to="#">Report Issue</Link>
-            </li>
-
-            <li>
-              <Link to="#">My Reports</Link>
-            </li>
-
-          </>
-
-        )}
-
-        <li>
-          <Link to="#">Profile</Link>
-        </li>
-
-        <li>
-          <Link to="/">Logout</Link>
-        </li>
-
-      </ul>
-
-    </div>
-
-  );
+    );
 
 }

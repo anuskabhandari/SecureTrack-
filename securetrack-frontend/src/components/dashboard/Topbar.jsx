@@ -1,5 +1,7 @@
 export default function Topbar({ role }) {
 
+    const date = new Date().toLocaleDateString();
+
     return (
 
         <div className="topbar">
@@ -8,7 +10,7 @@ export default function Topbar({ role }) {
 
                 <h2>Dashboard</h2>
 
-                <small>Welcome back!</small>
+                <small>{date}</small>
 
             </div>
 
@@ -16,10 +18,14 @@ export default function Topbar({ role }) {
 
                 <input
                     type="text"
-                    placeholder="Search..."
+                    placeholder="Search vulnerabilities..."
                 />
 
-                <span>🔔</span>
+                <button className="notification">
+
+                    🔔
+
+                </button>
 
                 <div className="user">
 

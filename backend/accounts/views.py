@@ -37,9 +37,13 @@ def login(request):
     )
 
     if user:
+
+        role = "Admin" if user.is_superuser else user.role
+
         return Response({
             "message": "Login success",
-            "role": user.role
+            "role": role,
+            "username": user.username
         })
 
     return Response({
