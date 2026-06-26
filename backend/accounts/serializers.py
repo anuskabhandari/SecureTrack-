@@ -1,20 +1,47 @@
-from django.contrib.auth.models import User
 from rest_framework import serializers
+from .models import User
 
-class RegisterSerializer(serializers.Serializer):
-    username = serializers.CharField()
-    email = serializers.EmailField()
-    password = serializers.CharField(write_only=True)
+
+class RegisterSerializer(serializers.ModelSerializer):
+
+    confirm_password = serializers.CharField(write_only=True)
+
     role = serializers.ChoiceField(
-        choices=['Developer', 'User']
+        choices=[
+            ("Developer", "Developer"),
+            ("User", "User")
+        ]
     )
 
-    def validate_username(self, value):
-        if User.objects.filter(username=value).exists():
-            raise serializers.ValidationError("Username already exists")
-        return value
+    class Meta:
+        model = User
+        fields = [
+            "username",
+            "email",
+            "password",
+            "confirm_password",
+            "role"
+        ]
 
-    def validate_email(self, value):
-        if User.objects.filter(email=value).exists():
-            raise serializers.ValidationError("Email already exists")
-        return value
+        extra_kwargs = {
+            "password": {"write_only": True}
+        }
+
+    def validate(self, data):
+
+        if data["password"] != data["confirm_password"]:
+            raise serializers.ValidationError(
+                {"confirm_password": "Passwords do not match."}
+            )
+
+        if User.objects.filter(username=data["username"]).exists():
+            raise serializers.ValidationError(
+                {"username": "Username already exists."}
+            )
+
+        if User.objects.filter(email=data["email"]).exists():
+            raise serializers.ValidationError(
+                {"email": "Email already exists."}
+            )
+
+        return data
