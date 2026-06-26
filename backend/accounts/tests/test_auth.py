@@ -8,7 +8,7 @@ def test_register():
     response = client.post("/api/register/", {
         "username": "rekha",
         "email": "rekha@test.com",
-        "password": "123"
+        "password": "StrongPassword123"
     })
 
     assert response.status_code == 200
